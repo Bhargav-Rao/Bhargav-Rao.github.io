@@ -1,1 +1,74 @@
-<h2>Will soon add stuff! Keep Waiting </h2>
+<!DOCTYPE html>
+<html >
+    <head>
+        <title>Bouncing Balls</title>
+        <script>
+            function init()
+            {
+                canv = document.getElementById('canv');
+                cont = canv.getContext("2d");
+                h = 200;
+                w = 200;
+                dh1 = h
+                dw1 = w
+                dh2 = h
+                dw2 = w
+                dd1 = 1
+                dd2 = 1
+                dd3 = 1
+                dd4 = 1
+                bounce()
+            }
+            function bounce()
+            {
+                canv.width=canv.width
+                x1 = (dh1/2-20)
+                y1 = (dw1-10)
+                x2 = (dh2/2+20)
+                y2 = (dw2-10)
+                circle(x1,y1,'blue');
+                circle(x2,y2,'yellow');
+                if (x1<10 || x1>190)
+                {
+                    dd1*=-1
+                }
+                if (y1<10 || y1>190)
+                {
+                    dd2*=-1
+                }
+                if (x2<10 || x2>190)
+                {
+                    dd3*=-1
+                }
+                if (y2<10 || y2>190)
+                {
+                    dd4*=-1
+                }
+                if ((x1-x2)*(x1-x2) - (y1-y2)*(y1-y2) == 400)
+                {
+                    dd1*=-1
+                    dd3*=-1
+                }
+                dh1-=dd1*1
+                dw1-=dd2*1
+                dh2+=dd3*1
+                dw2-=dd4*1
+                setTimeout(bounce,1)                
+            }
+            function circle(x,y,z)
+            {
+                grad = cont.createRadialGradient(x,y,10,x,y,1)
+                grad.addColorStop('0','red')
+                grad.addColorStop('1',z)
+                cont.fillStyle = grad;
+                cont.beginPath()
+                cont.arc(x,y,10,0,2*Math.PI,true)
+                cont.fill()
+            }
+        </script>
+    </head>
+    <body id = "body" onload="init()">
+            <h2> Will add more info soon. Meanwhile you can just see 2 bouncing balls </h2>
+            <canvas id = "canv" height = "200px" width = "200px" style = "border:2px solid black;position:absolute;left:100px;top:100px;" />
+    </body>
+</html>
