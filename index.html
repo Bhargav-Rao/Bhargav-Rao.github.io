@@ -1,25 +1,51 @@
 <!DOCTYPE html>
-<html >
+<html>
     <head>
-        <title>Bhargav H S </title>
-        <script>
+        <title>
+        </title>
+        <script type = "text/javascript">
             function init()
             {
-                
+                pg = document.getElementById('firstdiv');
+                pg.style.width =  window.innerWidth - 0.1 * window.innerHeight + "px";
+                pg.style.height = 0.9 * window.innerHeight + "px";
+                pg.style.left = 0.05 * window.innerHeight + "px";
+                pg.style.top = 0.05 * window.innerHeight + "px";
             }
         </script>
-        <style>
-            *
+        <style type = "text/css">
+            div.page
             {
+                position:absolute;
+                background-color: rgb(200,245,245);
+                border-radius:10px;
+            }
+            div.title
+            {
+                text-align:center;
                 font-style: oblique;
+                font-size: 40px;
+            }
+            div.subpara
+            {
+                font-family:Palatino;
+                position:relative;
+                left:10px;
             }
         </style>
     </head>
-    <body id = "body" onload="init()">
-            <h2> Bhargav Rao </h2><br>
-            Will add more info soon. Thank you for waiting patiently. <br>
-            Contact Me -<br> Mail - ID : bhargav.rao448@gmail.com <br>
-                         <a href = "https://twitter.com/BhargavHS">Twitter Profile</a> <br>
-                         <a href = "http://www.amazon.in/gp/registry/wishlist/21T0H8KBJQEDZ">Amazon Wishlist</a> 
+    <body onload="init()">
+        <div id= "firstdiv" class = "page">
+            <div class = "title" > Bhargav Rao  </div>
+            <div class = "subpara">
+                Will add more info soon. Thank you for waiting patiently. <br>
+                Do leave a message at <i> bhargav.rao448@gmail.com </i> <br>
+                Also check out </br>
+                <a href = "https://twitter.com/BhargavHS">Twitter Profile</a> <br>
+                <a href = "http://www.amazon.in/gp/registry/wishlist/21T0H8KBJQEDZ">Amazon Wishlist</a> 
+            </div>
+        </div>
     </body>
 </html>
+
+
