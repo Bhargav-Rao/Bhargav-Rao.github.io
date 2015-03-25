@@ -3,6 +3,9 @@ div.page
     position:absolute;
     background-color: rgb(200,245,245);
     border-radius:10px;
+    text-align: left;
+    border:1px outset;
+    padding: 5px;
 }
 div.title
 {
@@ -16,6 +19,14 @@ div.subpara
 {
     font-family:Palatino;
     position:relative;
+    vertical-align:middle; 
     left:10px;
     top:25px;
+}
+div.boxes
+{
+    font-size: 30px;
+    position:absolute;
+    vertical-align:middle; 
+    cursor:pointer;
 }
