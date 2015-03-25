@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-<link rel="shortcut icon" href="https://lh5.googleusercontent.com/-QF_1Rcfvf0A/AAAAAAAAAAI/AAAAAAAAAEM/JnXaYfzMXeM/photo.jpg?sz=128" />
-<link rel="stylesheet" type="text/css" href="css/styles.css">        
     <head>
+    <link rel="shortcut icon" href="https://lh5.googleusercontent.com/-QF_1Rcfvf0A/AAAAAAAAAAI/AAAAAAAAAEM/JnXaYfzMXeM/photo.jpg?sz=128" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css">        
         <title>
             Bhargav H S
         </title>
@@ -14,19 +14,103 @@
                 pg.style.height = 0.9 * window.innerHeight + "px";
                 pg.style.left = 0.05 * window.innerHeight + "px";
                 pg.style.top = 0.05 * window.innerHeight + "px";
+                tit = document.getElementById('titlediv');
+                para = document.getElementById('subparadiv');
+                boxes = document.getElementsByClassName('boxes');
+                for (i = 0;i<boxes.length;i++)
+                {
+                    j = boxes[i]
+                    j.style.width = (tit.offsetWidth)/2 - 30 + "px";
+                    j.style.height = (window.innerHeight - 0.2 * window.innerHeight - tit.offsetHeight)/4 - 10 + "px";
+                }
+                box1 = document.getElementById('box1');
+                box2 = document.getElementById('box2');
+                box3 = document.getElementById('box3');
+                box4 = document.getElementById('box4');
+                box1.style.left = tit.offsetLeft + 10 + "px"
+                box2.style.left = tit.offsetLeft + (tit.offsetWidth)/2 - 30 +  15 + "px"
+                box3.style.left = tit.offsetLeft + 10 + "px"
+                box4.style.left = tit.offsetLeft + (tit.offsetWidth)/2 - 30 +  15 + "px"
+                box1.style.top = tit.offsetTop + tit.offsetHeight +  window.innerHeight/25 + "px"
+                box2.style.top = tit.offsetTop + tit.offsetHeight +  window.innerHeight/25 + "px"
+                box3.style.top = tit.offsetTop + tit.offsetHeight + box1.offsetHeight +  window.innerHeight/10 + "px"
+                box4.style.top = tit.offsetTop + tit.offsetHeight + box1.offsetHeight +  window.innerHeight/10 + "px"
+                foot = document.getElementById('foot');
+                foot.style.bottom = window.innerHeight/6.5 + "px"
+                var wid = window.innerWidth - 40
+                wid = (wid-300)/6
+                anc = document.getElementsByClassName('anchors')
+                lft = wid
+                for (i = 0;i<anc.length;i++)
+                {
+                    j = anc[i]
+                    j.style.position = "relative";
+                    j.style.left = lft + "px"
+                    lft+=wid
+                }            
+                register();
+            }
+            function register()
+            {
+                box1.addEventListener("click",fire);
+                box2.addEventListener("click",water);
+                box3.addEventListener("click",earth);
+                box4.addEventListener("click",sky);
+                for (i = 0;i<boxes.length;i++) boxes[i].addEventListener("mouseover",magnify);
+                for (i = 0;i<boxes.length;i++) boxes[i].addEventListener("mouseout",minimize);
+            }
+            function fire(event)
+            {
+                location.href = "AboutMe.html"
+            }
+            function water(event)
+            {
+                location.href = "Project.html"
+            }
+            function earth(event)
+            {
+                location.href = "Acheivments.html"
+            }
+            function sky(event)
+            {
+                location.href = "Contact.html"
+            }
+            function magnify(event)
+            {
+                var box = document.getElementById(this.id);
+                box.style.fontSize = "60px"
+            }
+            function minimize(event)
+            {
+                var box = document.getElementById(this.id);
+                box.style.fontSize = "30px"
             }
         </script>
     </head>
     <body onload="init()">
         <div id= "firstdiv" class = "page">
-            <div class = "title" > Bhargav Rao  </div>
-            <div class = "subpara">
-                Will add more info soon. Thank you for waiting patiently. <br>
-                Do leave a message at <i> bhargav.rao448@gmail.com </i> <br>
-                Also check out <br>
-                <a href = "https://twitter.com/BhargavHS">Twitter Profile</a> <br>
-                <a href = "http://www.amazon.in/gp/registry/wishlist/21T0H8KBJQEDZ">Amazon Wishlist</a> 
-            </div>
+            <div class = "title" id  = "titlediv" > Bhargav Rao  </div>
+            <div class = "subpara" id = "subparadiv" style = "text-align:center">
+                <div class = "boxes" id = "box1" >
+                    About Me
+                </div>
+                <div class = "boxes" id = "box2" >
+                    Projects
+                </div>
+                <div class = "boxes" id = "box3" >
+                    Achievements
+                </div>
+                <div class = "boxes" id = "box4" >
+                    Contact
+                </div>
+            </div> 
+            <div class = "footer" id  = "foot" style = "position:absolute;" >
+                 <a class = "anchors" href = "http://stackoverflow.com/users/4099593/bhargav-rao" ><img src='http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png?v=41f6e13ade69' title = "Stack Overflow" alt="Stack Overflow" height="42"  width="42" > </a>
+                 <a class = "anchors" href = "https://plus.google.com/107341954722718180101/posts" ><img src='https://developers.google.com/+/images/branding/g+128.png' alt="Google +" height="42" width="42" title = "Google +" > </a>
+                 <a class = "anchors" href = "https://twitter.com/BhargavHS"  ><img src='http://www.ggmsa.ca/wp-content/uploads/2012/02/twitter-logo-transparent-small.png' alt="Twitter" height="42" width="42" title = "Twitter" > </a>
+                 <a class = "anchors" href = "https://www.facebook.com/bhargav.rao.448"  ><img src='http://ext100.wsu.edu/benton-franklin/wp-content/uploads/sites/22/2013/07/transparent-facebook-logo-icon-1024x1024.png' title = "Facebook" alt="Facebook" height="42" width="42" > </a>
+                 <a class = "anchors" href = "https://github.com/Bhargav-Rao"  ><img src='http://www.rutzenholzer.eu/static/pic/git.png' title = "Github" alt="Github" height="42" width="42" > </a>
+            </div> 
         </div>
     </body>
 </html>
