@@ -49,6 +49,7 @@
                     lft+=wid
                 }            
                 register();
+                disp()
             }
             function register()
             {
@@ -85,9 +86,14 @@
                 var box = document.getElementById(this.id);
                 box.style.fontSize = "30px"
             }
+            function disp()
+            {
+                b = document.getElementById('body')
+                b.style.visibility = 'visible'
+            }
         </script>
     </head>
-    <body onload="init()">
+    <body id = "body" onload="init()" style="visibility: hidden">
         <div id= "firstdiv" class = "page">
             <div class = "title" id  = "titlediv" > Bhargav Rao  </div>
             <div class = "subpara" id = "subparadiv" style = "text-align:center">
