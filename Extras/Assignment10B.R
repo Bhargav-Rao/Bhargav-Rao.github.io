@@ -1,0 +1,5 @@
+library("nycflights13")
+library("dplyr")
+reduced_data <- select(flights, carrier, hour, month)
+grps <- group_by(filter(reduced_data, hour>10 & month==4),carrier,add=TRUE)
+summarize(grps,count=n())
