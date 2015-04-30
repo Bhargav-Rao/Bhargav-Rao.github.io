@@ -33,8 +33,8 @@ Syntax to Create a procedure
 
 Examples
 <pre> define "newline [[][print "]]
-define "Twogaps [[][newline newline]]
-define "add [[a b][print sum :a :b]]
+ define "Twogaps [[][newline newline]]
+ define "add [[a b][print sum :a :b]]
 </pre>
 
 They can be called like the builtin procedures.
@@ -43,9 +43,9 @@ They can be called like the builtin procedures.
 The <c>to</c> keyword is used to create new methods
 
 <pre>
-to mul :a :b
+ to mul :a :b
     print product :a :b
-end      ; there is an end but no begin ...
+ end      ; there is an end but no begin ...
 </pre>
 Now to call the procedure
 <pre> mul 2 3  </pre>
