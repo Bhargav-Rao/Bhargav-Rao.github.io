@@ -8,12 +8,27 @@
             function init()
             {
                 frame = document.getElementById('frame');
-                frame.height = window.innerHeight - 100 +'px'
+                frame.height = window.innerHeight - 80 +'px'
                 frame.width = window.innerWidth / 2 +'px'
+                chapterNames = ['Introduction','Basic Functions','Procedures']
+                for (i=1;i<=chapterNames.length;i++)
+                {
+                    ele = document.getElementById(i);
+                    ele.addEventListener("mouseover",expand);
+                }
             }
-            function hover()
+            function expand(event)
             {
-                
+                var ele = document.getElementById(event.target.id);
+                ele.innerHTML +=  ' ' +chapterNames[Number(event.target.id)-1]
+                ele.style.fontWeight = "bold";
+                ele.addEventListener("mouseout",contract);
+            }
+            function contract(event)
+            {
+                var ele = document.getElementById(event.target.id);
+                ele.innerHTML =  'Chapter ' + event.target.id                
+                ele.style.fontWeight = "normal";
             }
         </script>
         <style>
@@ -22,11 +37,13 @@
     </head>
     <body onload="init()">
         <h2> LOGO TUTORIAL </h2>
-        <iframe src = "Default.html" id = "frame" name='frame' style='border:2px solid black;position:absolute;right:200px'>Hi</iframe>
+        <iframe src = "Default.html" id = "frame" name='frame' style='border:2px solid black;position:absolute;right:200px;top:40px'>Hi</iframe>
         <ul>       
-            <li> <a href="Chapter1.html" target = 'frame' >Chapter 1</a> <br /> </li>
-            <li> <a href="Chapter2.html" target = 'frame' >Chapter 2</a> <br /> </li>
+            <li> <a id = '1' href="Chapter1.html" target = 'frame' >Chapter 1</a> <br /> </li>
+            <li> <a id = '2' href="Chapter2.html" target = 'frame' >Chapter 2</a> <br /> </li>
+            <li> <a id = '3' href="Chapter3.html" target = 'frame' >Chapter 3</a> <br /> </li>
         </ul>
-        <a href="Default.html" target = 'frame' >Home</a> <br /> </li>
+        <a href="Default.html" target = 'frame' >Home</a> <br /> 
+        <a href="https://www.cs.berkeley.edu/~bh/usermanual" target = '_blank' > Official Tutorial </a>
     </body>
 </html>
