@@ -25,31 +25,35 @@
 
 <h4> <u> Chapter 2 Basic Functions </u> </h4>
 
-Predicates return <c>true</c> or <c>false</c>, ends with a p
-<pre> print numberp 1 ; displays if 1 is a number
-</pre>
-Similarly there are functions like <c>wordp</c>, <c>listp</c> etc ...
-
-<h5> List </h5>
-
-Lists are ordered collection of any len, arrays are of specific len
-<pre> print [a list]
- print {an array}
-</pre>
-<c>array 4 </c>, creates an array of four lists
-
 <h5> Make and Thing </h5>
 <c>make</c> keyword is used to create variables, not strongly typed, and not case sensitive
-<pre> make "num1 1; stores 1 in num1
- make "num2 "Hi; stores hi in num2
+<pre> make "num1 1       ; stores 1 in num1
+ make "num2 "Hi     ; stores hi in num2
 </pre>
-<c>thing</c> keyword is used to access variables
+<c>thing</c> keyword is used to access variables.
+We can also use <c>:</c> instead of <c>thing</c>
 <pre> print thing "num1
-</pre>
-else we can also use <c>:</c>
-<pre> print :num2
+ print :num2
 </pre>
 
+<h5> String Functions </h5>
+
+The function <c> count</c> returns the length of a string.
+The function <c> first</c> returns the first letter of a string and <c> but first</c> returns all other letters.
+The function <c> item</c> takes two inputs, a number and a word and returns the character at the position in the word.
+The function <c> word</c> concatenates two strings.
+<pre> make "name "LOGO        ; Create a string
+ print count :name       ; Print the length of the character
+ print first :name       ; Print first character
+ print butfirst :name    ; Print all the other characters
+ print item 2 :name      ; Print the second character
+ print word "hello :name ; Concat 'hello' to name (NOT INPLACE)
+</pre>
+
+<c> sentence</c> is used to make a string out of words. It can be used as follows. 
+(Note that without the parenthesis it is the same as <c>word</c>)
+<pre> (sentence :name "is "fun "to "learn)
+</pre>
 
     </body>
 </html>
