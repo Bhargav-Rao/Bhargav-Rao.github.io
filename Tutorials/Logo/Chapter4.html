@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        Procedures
+        </title>
+        <script>
+            
+        </script>
+        <style>
+            c
+            {
+                background-color:#EDE9E8;
+                font-family:monospace;
+            }
+            pre
+            {
+                background-color:#EDE9E8;
+                font-family:monospace;    
+                border-spacing: 100px;            
+            }
+        </style>
+    </head>
+    <body>
+
+<h4> <u> Chapter 4 Procedures Part 2 </u> </h4>
+
+<h5> Returning values from a function </h5>
+
+To return values we use <c>output </c>
+
+<pre> to fun 
+    output "|This is fun|
+ end
+ 
+ print fun
+</pre>
+
+
+<h5> Recursive functions </h5>
+
+Recursive functions can be written by calling the function within it's body. 
+Example, to calculate the factorial of a number:
+<pre> to fact :n
+    ifelse equalp :n 0 [output 1][output product :n fact difference :n 1]
+ end
+ 
+ print fact 10
+</pre>
+
+<h5> Local and Global Scope </h5>
+The <c>local</c> keyword makes the variables local to the function
+<pre> to makealocal
+     local "num1
+     make "num1 3     ; here num1 is local variable
+ end                  ; No longer accesible outside makealocal procedure
+</pre>
+
+Similarly the <c>global</c> keyword is used to make the variables global. However it is not required as all variables defined within a function are in the global scope. 
+<br />
+<b> Note </b> On defining a function, the global variables inside are not defined. They are defined only after you have called the function. 
+
+    </body>
+</html>

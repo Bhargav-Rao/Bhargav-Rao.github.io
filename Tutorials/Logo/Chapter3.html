@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        Procedures
+        </title>
+        <script>
+            
+        </script>
+        <style>
+            c
+            {
+                background-color:#EDE9E8;
+                font-family:monospace;
+            }
+            pre
+            {
+                background-color:#EDE9E8;
+                font-family:monospace;    
+                border-spacing: 100px;            
+            }
+        </style>
+    </head>
+    <body>
+
+<h4> <u> Chapter 3 Procedures Part 1 </u> </h4>
+
+<h5> The define keyword </h5>
+Syntax to Create a procedureusing <c>define</c>
+
+<pre> define "name [[List of parameters] [instruction instruction ...]]
+</pre>
+
+Examples
+<pre> define "newline [[][print "]]
+ define "Twogaps [[][newline newline]]
+ define "add [[a b][print sum :a :b]]
+</pre>
+
+They can be called like the builtin procedures.
+<pre> add 2 3  </pre>
+
+<h5> Procedures using to </h5>
+
+The <c>to</c> keyword can be used to create new procedures that span more than one line
+
+<pre>
+ to mul :a :b
+    print product :a :b
+ end      ; there is an end but no begin ...
+</pre>
+Now to call the procedure
+<pre> mul 2 3  </pre>
+
+
+<c> to</c> is the same as <c>define</c> but the latter is inline way of declaring functions.
+
+
+    </body>
+</html>
