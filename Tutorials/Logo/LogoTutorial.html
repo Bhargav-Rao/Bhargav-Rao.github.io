@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Welcome to Logo Tutorial 
+        </title>
+        <script>
+            function init()
+            {
+                frame = document.getElementById('frame');
+                frame.height = window.innerHeight - 20 +'px'
+                frame.width = window.innerWidth * 0.60 +'px'
+                chapterNames = ['Introduction to Logo','Basic Functions','Procedures Part 1','Procedures Part 2','Conditional Expressions','Loops and Iteration', 'String Processing','Lists in Logo','Arrays in Logo']
+                for (i=1;i<=chapterNames.length;i++)
+                {
+                    ele = document.getElementById(i);
+                    ele.addEventListener("mouseover",expand);
+                }
+            }
+            function expand(event)
+            {
+                var ele = document.getElementById(event.target.id);
+                ele.innerHTML =  ' ' +chapterNames[Number(event.target.id)-1]
+                ele.style.fontWeight = "bold";
+                ele.addEventListener("mouseout",contract);
+            }
+            function contract(event)
+            {
+                var ele = document.getElementById(event.target.id);
+                ele.innerHTML =  'Chapter ' + event.target.id                
+                ele.style.fontWeight = "normal";
+            }
+        </script>
+        <style>
+            a#manlink
+            {
+                font-style:oblique;
+            }
+            a
+            {
+                text-decoration:none;
+                color:black;
+            }
+            a:hover
+            {
+                color:red;
+            }
+            li
+            {
+                list-style-image: url(turtle.png);
+                font-size:30px
+            }
+        </style>
+    </head>
+    <body onload="init()" style="background-color:rgb(200,245,245)">
+       
+        <h2><a href="Default.html" target = 'frame' >LOGO TUTORIAL</a></h2> <br />
+        <iframe src = "Default.html" id = "frame" name='frame' style='border:1px solid black;position:absolute;right:10px;top:10px;background-color:white;'>Hi</iframe>
+            <ul>       
+            <li> <a id = '1' class = 'chapters' href="Chapter1.html" target = 'frame' >Chapter 1</a> <br /> </li>
+            <li> <a id = '2' class = 'chapters' href="Chapter2.html" target = 'frame' >Chapter 2</a> <br /> </li>
+            <li> <a id = '3' class = 'chapters' href="Chapter3.html" target = 'frame' >Chapter 3</a> <br /> </li>
+            <li> <a id = '4' class = 'chapters' href="Chapter4.html" target = 'frame' >Chapter 4</a> <br /> </li>
+            <li> <a id = '5' class = 'chapters' href="ErrorPag.html" target = 'frame' style = "opacity:0.1">Chapter 5</a> <br /> </li>
+            <li> <a id = '6' class = 'chapters' href="ErrorPag.html" target = 'frame' style = "opacity:0.1">Chapter 6</a> <br /> </li>
+            <li> <a id = '7' class = 'chapters' href="ErrorPag.html" target = 'frame' style = "opacity:0.1">Chapter 7</a> <br /> </li>
+            <li> <a id = '8' class = 'chapters' href="ErrorPag.html" target = 'frame' style = "opacity:0.1">Chapter 8</a> <br /> </li>
+            <li> <a id = '9' class = 'chapters' href="ErrorPag.html" target = 'frame' style = "opacity:0.1">Chapter 9</a> <br /> </li>
+        </ul>
+        <a id="manlink" href="https://www.cs.berkeley.edu/~bh/usermanual" target = '_blank' > Official User Manual </a>
+    </body>
+</html>
