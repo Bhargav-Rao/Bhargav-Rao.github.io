@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Test Blog
+        </title>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>    
+        <script id="dsq-count-scr" src="//bhargavrao.disqus.com/count.js" async></script>
+    </head>
+</html>
+<body>
+<div class="question">
+<h1><div class="post-title" itemprop="text">How to remove \n from a list element?</div></h1>
+<div class="post-text" itemprop="text">
+
+<p>I'm trying to get Python to a read line from a .txt file and write the elements of the first line into a list. The elements in the file were tab- separated so I used <code>split("\t")</code> to separate the elements. Because the .txt file has a lot of elements I saved the data found in each line into a separate list.</p>
+
+<p>The problem I currently have is that it's showing each list like this:</p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pun">[</span><span class="str">'Name1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.9'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.4'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3\n'</span><span class="pun">]</span></code></pre>
+
+<p>How can I remove <code>\n</code> from the last element of the list and make it just <code>'7.3'</code>?</p>
+    </div>
+</div>
+<div class="answer">
+<h2><strong><em>From Python3 onwards</em></strong></h2>
+
+<p><code>map</code> no longer returns a list but a <code>mapObject</code>, thus the answer will look something like</p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pun">&gt;&gt;&gt;</span><span class="pln"> map</span><span class="pun">(</span><span class="kwd">lambda</span><span class="pln"> x</span><span class="pun">:</span><span class="pln">x</span><span class="pun">.</span><span class="pln">strip</span><span class="pun">(),</span><span class="pln">l</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">&lt;</span><span class="pln">map object at </span><span class="lit">0x7f00b1839fd0</span><span class="pun">&gt;</span></code></pre>
+
+<p>You can read more about it <a href="https://docs.python.org/3.0/whatsnew/3.0.html#views-and-iterators-instead-of-lists" rel="nofollow">here</a></p>
+
+<blockquote>
+  <p><code>map()</code> and <code>filter()</code> return iterators. If you really need a <code>list</code>, a quick fix is e.g. <code>list(map(...))</code></p>
+</blockquote>
+
+<p><em>So now what are the ways of getting trough this?</em></p>
+
+<hr>
+
+<h2><strong><em>Case 1 - The <code>list</code> call over <code>map</code> with a <code>lambda</code></em></strong></h2>
+
+<p><code>map</code> returns an <em>iterator</em>. <a href="https://docs.python.org/3/library/functions.html#func-list" rel="nofollow"><code>list</code></a> is a function that can convert an iterator to a list. Hence you will need to wrap a <code>list</code> call around <code>map</code>. So the answer now becomes,</p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pun">&gt;&gt;&gt;</span><span class="pln"> l </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'Name1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.9'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.4'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3\n'</span><span class="pun">]</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> list</span><span class="pun">(</span><span class="pln">map</span><span class="pun">(</span><span class="kwd">lambda</span><span class="pln"> x</span><span class="pun">:</span><span class="pln">x</span><span class="pun">.</span><span class="pln">strip</span><span class="pun">(),</span><span class="pln">l</span><span class="pun">))</span><span class="pln">
+</span><span class="pun">[</span><span class="str">'Name1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.9'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.4'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">]</span></code></pre>
+
+<p>Very good, we get the output. Now we check the amount of time it takes for this piece of code to execute.</p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pln">$ python3 </span><span class="pun">-</span><span class="pln">m timeit </span><span class="str">"l = ['Name1', '7.3', '6.9', '6.6', '6.6', '6.1', '6.4', '7.3\n'];list(map(lambda x:x.strip(),l))"</span><span class="pln">
+</span><span class="lit">100000</span><span class="pln"> loops</span><span class="pun">,</span><span class="pln"> best of </span><span class="lit">3</span><span class="pun">:</span><span class="pln"> </span><span class="lit">2.22</span><span class="pln"> usec per loop</span></code></pre>
+
+<p>2.22 microseconds. That is not so bad. But are there more efficient ways?</p>
+
+<hr>
+
+<h2><strong><em>Case 2 - The <code>list</code> call over <code>map</code> withOUT a <code>lambda</code></em></strong></h2>
+
+<p><code>lambda</code> is frowned upon by many in the Python community (including <a href="http://www.artima.com/weblogs/viewpost.jsp?thread=98196" rel="nofollow">Guido</a>). Apart from that it will greatly reduce the speed of the program. Hence we need to avoid that as much as possible. The toplevel function <a href="https://docs.python.org/3/library/stdtypes.html#str.strip" rel="nofollow"><code>str.strip</code></a>. Comes to our aid here. </p>
+
+<p>The <code>map</code> can be re-written without using <code>lambda</code> using <code>str.strip</code> as</p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pun">&gt;&gt;&gt;</span><span class="pln"> list</span><span class="pun">(</span><span class="pln">map</span><span class="pun">(</span><span class="pln">str</span><span class="pun">.</span><span class="pln">strip</span><span class="pun">,</span><span class="pln">l</span><span class="pun">))</span><span class="pln">
+</span><span class="pun">[</span><span class="str">'Name1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.9'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.4'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">]</span></code></pre>
+
+<p>And now for the times. </p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pln">$ python3 </span><span class="pun">-</span><span class="pln">m timeit </span><span class="str">"l = ['Name1', '7.3', '6.9', '6.6', '6.6', '6.1', '6.4', '7.3\n'];list(map(str.strip,l))"</span><span class="pln">
+</span><span class="lit">1000000</span><span class="pln"> loops</span><span class="pun">,</span><span class="pln"> best of </span><span class="lit">3</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.38</span><span class="pln"> usec per loop</span></code></pre>
+
+<p>Fantastic. You can see the efficiency differences between the two ways. It is nearly 60% faster. Thus the approach without using a <code>lambda</code> is a better choice here.</p>
+
+<hr>
+
+<h2><strong><em>Case 3 - Following Guidelines, The Regular way</em></strong></h2>
+
+<p>Another important point from <a href="https://docs.python.org/3.0/whatsnew/3.0.html#views-and-iterators-instead-of-lists" rel="nofollow">What’s New In Python 3.0</a> is that it advices us to avoid <code>map</code> where possible.</p>
+
+<blockquote>
+  <p>Particularly tricky is <code>map()</code> invoked for the side effects of the
+  function; the correct transformation is to use a regular <code>for</code> loop
+  (since creating a list would just be wasteful).</p>
+</blockquote>
+
+<p>So we can solve this problem without a <code>map</code> by using a regular <code>for</code> loop. </p>
+
+<p>The trivial way of solving (the brute-force) would be:-</p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pun">&gt;&gt;&gt;</span><span class="pln"> l </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'Name1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.9'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.4'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3\n'</span><span class="pun">]</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> final_list </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[]</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> l</span><span class="pun">:</span><span class="pln">
+</span><span class="pun">...</span><span class="pln">     final_list</span><span class="pun">.</span><span class="pln">append</span><span class="pun">(</span><span class="pln">i</span><span class="pun">.</span><span class="pln">strip</span><span class="pun">())</span><span class="pln">
+</span><span class="pun">...</span><span class="pln"> 
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> final_list
+</span><span class="pun">[</span><span class="str">'Name1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.9'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.4'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">]</span></code></pre>
+
+<p>The timing setup</p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="kwd">def</span><span class="pln"> f</span><span class="pun">():</span><span class="pln">
+    l </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'Name1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.9'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.4'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3\n'</span><span class="pun">]</span><span class="pln">
+    final_list </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[]</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> l</span><span class="pun">:</span><span class="pln">
+         final_list</span><span class="pun">.</span><span class="pln">append</span><span class="pun">(</span><span class="pln">i</span><span class="pun">.</span><span class="pln">strip</span><span class="pun">())</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> timeit
+</span><span class="kwd">print</span><span class="pun">(</span><span class="pln">min</span><span class="pun">(</span><span class="pln">timeit</span><span class="pun">.</span><span class="pln">repeat</span><span class="pun">(</span><span class="str">"f()"</span><span class="pun">,</span><span class="str">"from __main__ import f"</span><span class="pun">)))</span></code></pre>
+
+<p>And the result. </p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="lit">1.5322505849981098</span></code></pre>
+
+<p>As you can see the brute-force is a bit slower here. But it is definitely more readable to a common programmer than a <code>map</code> clause. </p>
+
+<hr>
+
+<h2><strong><em>Case 4 - List Comprehensions</em></strong></h2>
+
+<p>A <a href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions" rel="nofollow">list comprehension</a> here is also possible and is the same as in Python2.</p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pun">&gt;&gt;&gt;</span><span class="pln"> </span><span class="pun">[</span><span class="pln">i</span><span class="pun">.</span><span class="pln">strip</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> l</span><span class="pun">]</span><span class="pln">
+</span><span class="pun">[</span><span class="str">'Name1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.9'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.4'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">]</span></code></pre>
+
+<p>Now for the timings:</p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pln">$ python3 </span><span class="pun">-</span><span class="pln">m timeit </span><span class="str">"l = ['Name1', '7.3', '6.9', '6.6', '6.6', '6.1', '6.4', '7.3\n'];[i.strip() for i in l]"</span><span class="pln">
+</span><span class="lit">1000000</span><span class="pln"> loops</span><span class="pun">,</span><span class="pln"> best of </span><span class="lit">3</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.28</span><span class="pln"> usec per loop</span></code></pre>
+
+<p>As you can see the list-comprehension is more effective than <code>map</code> (even that without a <code>lambda</code>). <strong><em>Hence the thumb rule in Python3 is to use a list comprehension instead of <code>map</code></em></strong></p>
+
+<hr>
+
+<h2><strong><em>Case 5 - In-Place mechanisms and Space Efficiency (<a href="https://en.wikipedia.org/wiki/Space%E2%80%93time_tradeoff" rel="nofollow">T-M-T</a>)</em></strong></h2>
+
+<p>A final way is to make the changes in-place within the list itself. This will save a lot of memory space. This can be done using <a href="https://docs.python.org/3/library/functions.html#enumerate" rel="nofollow"><code>enumerate</code></a>.</p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pun">&gt;&gt;&gt;</span><span class="pln"> l </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'Name1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.9'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.4'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3\n'</span><span class="pun">]</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> </span><span class="kwd">for</span><span class="pln"> i</span><span class="pun">,</span><span class="pln">s </span><span class="kwd">in</span><span class="pln"> enumerate</span><span class="pun">(</span><span class="pln">l</span><span class="pun">):</span><span class="pln">
+</span><span class="pun">...</span><span class="pln">     l</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> s</span><span class="pun">.</span><span class="pln">strip</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">...</span><span class="pln"> 
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> l
+</span><span class="pun">[</span><span class="str">'Name1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.9'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.6'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.1'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'6.4'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'7.3'</span><span class="pun">]</span></code></pre>
+
+<p>The timing result would be <code>1.4806894720022683</code>. But however this way is space effective. </p>
+
+<hr>
+
+<h2><strong><em>Conclusion</em></strong></h2>
+
+<p>A comparitive list of timings (Both Python 3.4.3 and Python 3.5.0) </p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pun">--------------------------------------------------</span><span class="pln">
+</span><span class="pun">|</span><span class="pln">no</span><span class="pun">|</span><span class="pln"> method          </span><span class="pun">|</span><span class="pln"> </span><span class="typ">Py3</span><span class="pun">.</span><span class="lit">4</span><span class="pln"> </span><span class="pun">|</span><span class="typ">Place</span><span class="pun">|</span><span class="pln"> </span><span class="typ">Py3</span><span class="pun">.</span><span class="lit">5</span><span class="pln"> </span><span class="pun">|</span><span class="typ">Place</span><span class="pun">|</span><span class="pln">
+</span><span class="pun">|--|-----------------|-------|-----|-------|-----|</span><span class="pln">
+</span><span class="pun">|</span><span class="lit">1</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> map </span><span class="kwd">with</span><span class="pln"> </span><span class="kwd">lambda</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">2.22u</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">5</span><span class="pln">   </span><span class="pun">|</span><span class="pln"> </span><span class="lit">2.85u</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">5</span><span class="pln">   </span><span class="pun">|</span><span class="pln">
+</span><span class="pun">|</span><span class="lit">2</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> map w</span><span class="pun">/</span><span class="pln">o </span><span class="kwd">lambda</span><span class="pln">  </span><span class="pun">|</span><span class="pln"> </span><span class="lit">1.38u</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">2</span><span class="pln">   </span><span class="pun">|</span><span class="pln"> </span><span class="lit">2.00u</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">2</span><span class="pln">   </span><span class="pun">|</span><span class="pln">
+</span><span class="pun">|</span><span class="lit">3</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> brute</span><span class="pun">-</span><span class="pln">force     </span><span class="pun">|</span><span class="pln"> </span><span class="lit">1.53u</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">4</span><span class="pln">   </span><span class="pun">|</span><span class="pln"> </span><span class="lit">2.22u</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">4</span><span class="pln">   </span><span class="pun">|</span><span class="pln">
+</span><span class="pun">|</span><span class="lit">4</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> list comp       </span><span class="pun">|</span><span class="pln"> </span><span class="lit">1.28u</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">1</span><span class="pln">   </span><span class="pun">|</span><span class="pln"> </span><span class="lit">1.25u</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">1</span><span class="pln">   </span><span class="pun">|</span><span class="pln">
+</span><span class="pun">|</span><span class="lit">5</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="kwd">in</span><span class="pun">-</span><span class="pln">place        </span><span class="pun">|</span><span class="pln"> </span><span class="lit">1.48u</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">3</span><span class="pln">   </span><span class="pun">|</span><span class="pln"> </span><span class="lit">2.14u</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">3</span><span class="pln">   </span><span class="pun">|</span><span class="pln">
+</span><span class="pun">--------------------------------------------------</span></code></pre>
+
+<p>Finally note that the list-comprehension is the best way and the <code>map</code> using <code>lambda</code> is the worst. But again --- <strong><em>ONLY IN PYTHON3</em></strong></p>
+</div>
+<div class="originalpost">
+View the original post on Stack Overflow at <a href="http://stackoverflow.com/a/30881893/4099593"><em>How to remove \n from a list element?</em></a>
+</div>
+<div class="comments">
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//bhargavrao.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
