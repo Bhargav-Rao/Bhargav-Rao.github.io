@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Clean Blog - Sample Post</title>
+    <title>Test Stuff</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -95,7 +95,7 @@
 
                     <p>You can read more about it <a href="https://docs.python.org/3.0/whatsnew/3.0.html#views-and-iterators-instead-of-lists" rel="nofollow">here</a></p>
 
-                    <blockquote><p><code>map()</code> and <code>filter()</code> return iterators. If you really need a <code>list</code>, a quick fix is e.g. <code>list(map(...))</code></p>
+                    <blockquote><code>map()</code> and <code>filter()</code> return iterators. If you really need a <code>list</code>, a quick fix is e.g. <code>list(map(...))</code>
                     </blockquote>
 
                     <p><em>So now what are the ways of getting trough this?</em></p>
@@ -141,9 +141,9 @@
 
                     <p>Another important point from <a href="https://docs.python.org/3.0/whatsnew/3.0.html#views-and-iterators-instead-of-lists" rel="nofollow">What’s New In Python 3.0</a> is that it advices us to avoid <code>map</code> where possible.</p>
 
-                    <blockquote><p>Particularly tricky is <code>map()</code> invoked for the side effects of the
+                    <blockquote>Particularly tricky is <code>map()</code> invoked for the side effects of the
                       function; the correct transformation is to use a regular <code>for</code> loop
-                      (since creating a list would just be wasteful).</p>
+                      (since creating a list would just be wasteful).
                     </blockquote>
 
                     <p>So we can solve this problem without a <code>map</code> by using a regular <code>for</code> loop. </p>
