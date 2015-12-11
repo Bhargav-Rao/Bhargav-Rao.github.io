@@ -1,0 +1,16 @@
+.horiz
+{
+    display: inline;
+    list-style-type: none;
+    padding-right: 10px;
+    padding-left: 10px;
+    color:black;
+}
+h2
+{
+    color:#F69C55;
+}
+.centered
+{
+    text-align:center;
+}
