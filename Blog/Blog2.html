@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Test Stuff</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Test Stuff</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="http://bhargav-rao.github.io">About</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>How does str(list) work?</h1>
+                        <h2 class="subheading">Taken from Stack Overflow at <a href="http://stackoverflow.com/a/30109108/4099593"><em>How does str(list) work?</em></a></h2>
+                        <span class="meta">Posted by <a href="#">Bhargav Rao</a> on December 11, 2015</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="answer">
+                    <div class="post-text" itemprop="text">
+
+<h1>What is <a href="https://docs.python.org/2/library/functions.html#str"><code>str</code></a> and <a href="https://docs.python.org/2/reference/datamodel.html#object.__str__"><code>__str__</code></a>?</h1>
+
+<p>The function <code>str</code> is to return a <em>printable</em> form of the object only! From the <a href="https://docs.python.org/2/library/functions.html#str">docs</a></p>
+
+<blockquote>
+  <code>str(object)</code> does not always attempt to return a string that is
+  acceptable to <code>eval()</code>; its goal is to return a printable string.
+</blockquote>
+
+<p>The <code>__str__</code> function in a class is called whenever you call the <code>str</code> on an object. Again from the <a href="https://docs.python.org/2/reference/datamodel.html#object.__str__">documentation</a></p>
+
+<blockquote>
+  <code>object.__str__(self)</code></p>
+  
+  <p>Called by the <code>str()</code> built-in function and by the <code>print</code> statement to compute the “informal” string representation of an object.
+</blockquote>
+
+<h1>What is <a href="https://docs.python.org/2/library/functions.html#list"><code>list</code></a> function?</h1>
+
+<p>The function <code>list</code> is to create a list from an iterable! Again from the <a href="https://docs.python.org/2/library/functions.html#list">docs</a></p>
+
+<blockquote>
+  Return a <code>list</code> whose items are the same and in the same order as
+  iterable‘s items
+</blockquote>
+
+<p>Thus, <code>str(list)</code> gives you a printable form and <code>list(str(list))</code> will iterate over the string. That is <code>list(str(list))</code> will give you a list of the individual characters of the printable form of the argument passed.</p>
+
+<p>A small walk-through between the nested calls,</p>
+
+<p>Given list, <code>l = ['a','b']</code>  <sub>(Apologies for taking a smaller example than that in your question)</sub>. </p>
+
+<p>When you call <code>str(l)</code>, it returns a printable form of the list <code>l</code>, that is <code>"['a','b']"</code>.</p>
+
+<p>Now you can see clearly that <code>"['a','b']"</code> is a string and is indeed an <em>iterable</em>. Now when you call <code>list</code> on this i.e. <code>list("['a','b']")</code> you get a weird list like <code>['[', "'", 'a', "'", ',', "'", 'b', "'", ']']</code>. <em>Why does this happen?</em> This happens because the string iterates over its characters, you can test this by using a dummy string,</p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pun">&gt;&gt;&gt;</span><span class="pln"> </span><span class="str">'dummy'</span><span class="pln">
+</span><span class="str">'dummy'</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> list</span><span class="pun">(</span><span class="str">'dummy'</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">[</span><span class="str">'d'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'u'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'m'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'m'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'y'</span><span class="pun">]</span></code></pre>
+
+<p>Thus when you call the <code>list</code> on a string you get a list of character. Note that again here, when you call <code>str</code> on <code>list('dummy')</code>, you will not get back your original string <code>'dummy'</code>, so again you will have to use <a href="https://docs.python.org/2/library/functions.html#join"><code>join</code></a>! Thus recalling the same function will <strong>NOT</strong> get you back your original object!</p>
+
+<p><strong>So, Calling <code>str</code> over a list calls the builtin <code>__str__</code> method of the list?</strong></p>
+
+<p><strong><em>The answer is NO!</em></strong></p>
+
+<h2>What happens internally when you call <code>str</code> on a list?</h2>
+
+<p>Whenever you call <code>str</code> on an list object, the steps followed are </p>
+
+<ol>
+<li>Call the <code>repr</code> of each of the list element.</li>
+<li>Add a fancy <code>[</code> at the front and another <code>]</code> at the end of the list. </li>
+<li>Join all of them with a comma. </li>
+</ol>
+
+<p><s>As you can see from the source code of the list object in <a href="https://github.com/python/cpython/blob/master/Objects/listobject.c">cpython on github</a>.</s> Going through the source code of cpython in <a href="https://hg.python.org/cpython/file/e8783c581928/Objects/listobject.c#l362">hg.python</a>, which is more clear, you can see the following three comments. <sub>(Thanks to Ashwini for the link on that particular <a href="http://stackoverflow.com/questions/30109030/how-does-strlist-work#comment48330380_30109030">code</a>)</sub></p>
+
+<blockquote>
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pun">/*</span><span class="pln"> </span><span class="typ">Do</span><span class="pln"> repr</span><span class="pun">()</span><span class="pln"> on each element</span><span class="pun">.</span><span class="pln">  </span><span class="typ">Note</span><span class="pln"> that this may mutate the list</span><span class="pun">,</span><span class="pln">
+   so must refetch the list size on each iteration</span><span class="pun">.</span><span class="pln"> </span><span class="pun">*/</span><span class="pln"> line </span><span class="pun">(</span><span class="lit">382</span><span class="pun">)</span><span class="pln">
+
+</span><span class="pun">/*</span><span class="pln"> </span><span class="typ">Add</span><span class="pln"> </span><span class="str">"[]"</span><span class="pln"> decorations to the first </span><span class="kwd">and</span><span class="pln"> last items</span><span class="pun">.</span><span class="pln"> </span><span class="pun">*/</span><span class="pln"> line </span><span class="pun">(</span><span class="lit">398</span><span class="pun">)</span><span class="pln">
+
+</span><span class="pun">/*</span><span class="pln"> </span><span class="typ">Paste</span><span class="pln"> them all together </span><span class="kwd">with</span><span class="pln"> </span><span class="str">", "</span><span class="pln"> between</span><span class="pun">.</span><span class="pln"> </span><span class="pun">*/</span><span class="pln"> line </span><span class="pun">(</span><span class="lit">418</span><span class="pun">)</span></code></pre>
+</blockquote>
+
+<p>These correspond to the points I mentioned above.</p>
+
+<h1>Now what is <a href="https://docs.python.org/2/library/functions.html#repr"><code>repr</code></a>?</h1>
+
+<p><code>repr</code> prints the string representation of all the objects. Again from the <a href="https://docs.python.org/2/library/functions.html#repr">documentation</a></p>
+
+<blockquote>
+  Return a string containing a printable representation of an object.
+</blockquote>
+
+<p>and also note this sentence!</p>
+
+<blockquote>
+  For many types, this function makes an attempt to return a string
+  that would yield an object with the same value when passed to <code>eval()</code>,
+  otherwise the representation is a string enclosed in angle brackets
+  that contains the name of the type of the object together with
+  additional information often including the name and address of the
+  object.
+</blockquote>
+
+<h1>Does <code>list(str(list))</code> turn the <code>str(list)</code> back to the original list?</h1>
+
+<p><strong><em>No</em></strong></p>
+
+<p>Internally, <code>str(list)</code> actually creates the <code>repr</code> representation of the list object. So to get back the list after calling <code>str</code> on the list, you actually need to do <a href="https://docs.python.org/2/library/functions.html#eval"><code>eval</code></a> on it and not a <code>list</code> call. </p>
+
+<h1>Workarounds</h1>
+
+<h2>1. Using <a href="https://docs.python.org/3/library/ast.html#ast.literal_eval"><code>literal_eval</code></a></h2>
+
+<p>But we all know that <a href="http://nedbatchelder.com/blog/201206/eval_really_is_dangerous.html"><code>eval</code> is <em>evil</em></a>, so what is the workaround? The work-around would be to use <a href="https://docs.python.org/3/library/ast.html#ast.literal_eval"><code>ast.literal_eval</code></a>. That brings us to your 3rd question,</p>
+
+
+<p><a href="https://docs.python.org/3/library/ast.html#ast.literal_eval"><code>ast.literal_eval</code></a> is safe <a href="http://nedbatchelder.com/blog/201206/eval_really_is_dangerous.html">unlike</a> the <code>eval</code> function. The docs itself mention that it is safe -- </p>
+
+<blockquote>
+  <em>Safely</em> evaluate an expression node or a string containing a Python literal or container display
+</blockquote>
+
+<h2>2. Using string functions and builtins</h2>
+
+<p>Another workaround can be done using <a href="https://docs.python.org/3/library/stdtypes.html#str.split"><code>str.split</code></a></p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pun">&gt;&gt;&gt;</span><span class="pln"> x </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="str">'abc'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'def'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'ghi'</span><span class="pun">]</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a </span><span class="pun">=</span><span class="pln"> str</span><span class="pun">(</span><span class="pln">x</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a</span><span class="pun">[</span><span class="lit">2</span><span class="pun">:-</span><span class="lit">2</span><span class="pun">].</span><span class="pln">split</span><span class="pun">(</span><span class="str">"', '"</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">[</span><span class="str">'abc'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'def'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'ghi'</span><span class="pun">]</span></code></pre>
+
+<p>This is just a simple way to do that for a list of strings. For a list of integers you will need <code>map</code>. </p>
+
+<pre style="" class="lang-py prettyprint prettyprinted"><code><span class="pun">&gt;&gt;&gt;</span><span class="pln"> x </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">]</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a </span><span class="pun">=</span><span class="pln">str</span><span class="pun">(</span><span class="pln">x</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> list</span><span class="pun">(</span><span class="pln">map</span><span class="pun">(</span><span class="pln">int</span><span class="pun">,</span><span class="pln">a</span><span class="pun">[</span><span class="lit">1</span><span class="pun">:-</span><span class="lit">1</span><span class="pun">].</span><span class="pln">split</span><span class="pun">(</span><span class="str">', '</span><span class="pun">)))</span><span class="pln"> </span><span class="com"># No need for list call in Py2</span><span class="pln">
+</span><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">3</span><span class="pun">]</span></code></pre>
+
+<p>Thus unlike <code>literal_eval</code> these are simple hacks given that you know the  elements of the list. If they are heterogeneous in nature like <code>[1, "a", True]</code> then you will have to loop through the split list and discover the element type and then convert it and append the converted element to a final list. </p>
+ </div>
+                    <div class="comments">
+                    <div id="disqus_thread"></div>
+                        <script>
+                            /**
+                             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                             */
+                            /*
+                            var disqus_config = function () {
+                                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                            };
+                            */
+                            (function() {  // DON'T EDIT BELOW THIS LINE
+                                var d = document, s = d.createElement('script');
+                                
+                                s.src = '//bhargav-rao.disqus.com/embed.js';
+                                
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://twitter.com/BhargavHS">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/bhargav.rao.448">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Bhargav-Rao">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://stackoverflow.com/users/4099593/bhargav-rao">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; bhargav-rao.github.io</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
