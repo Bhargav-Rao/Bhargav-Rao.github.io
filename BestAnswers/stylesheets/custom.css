@@ -1,4 +1,7 @@
 .horiz{display:inline;list-style-type:none;padding-right:10px;padding-left:10px;color:black;}
-h2{color:#F69C55;}
+h2.questit{color:#F69C55;cursor:pointer}
+h2.questit:target{color:red;cursor:pointer;}
 .centered{text-align:center;}
 .headr{color:black;}
+.hide{display:none;}
+
