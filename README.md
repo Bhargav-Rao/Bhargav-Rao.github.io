@@ -1,3 +1,3 @@
 # Bhargav-Rao.github.io
 
-A completely useless README.md
+Personal Website hosted on Github Pages. 
