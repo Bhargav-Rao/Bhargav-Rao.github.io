@@ -12,3 +12,10 @@ red
 	color: red;
 	font-weight: bold;
 }
+.map
+{
+	height:300px;
+	width: 90%;
+	border:2px solid black;
+	border-radius: 2px;
+}
