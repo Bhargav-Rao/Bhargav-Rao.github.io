@@ -19,3 +19,12 @@ red
 	border:2px solid black;
 	border-radius: 2px;
 }
+b
+{
+	font-weight: bold;
+}
+i
+{
+	font-style: italic;
+	text-decoration: underline;
+}
