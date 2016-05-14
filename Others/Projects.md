@@ -65,27 +65,58 @@ Online Library catalogs are very common to find these days. Thanks to the digita
 Other Projects
 ---
 
-- Analysis of the ACOA Dataset
-(Guide: Dr Stan Matwin, Director, BigData Analytics Institute, Dalhousie University)
-  - Objective : To discover if the political association of a region affects the public grants that it recieves.
-  - The project involves merging of four datasets, visualization using R and spatio-temporal analysis.
-- Sales Data Visualization and Analysis
-(Guide: Dr Somayeh Fatahi, Researcher, BigData Analytics Institute, Dalhousie University)
-  - Objective : To visualize the sales data of stores based on ethnicity and to analyse the clusters.
-  - The project involves ink drop visualization using R and analysis using cluster mapping
-- Autoscaling of Cloud Foundry
-(Guide: Dr Dinkar Sitaram, Head, Centre for Cloud Computing, PESIT)
-  - Objective : To propose a better technique to autoscale Cloud Foundry using predictive approaches.
-  - The project involves adding a Perceptron based predictive scaling algorithm to BOSH.
-- Extracting information and Visualization of LAK Dataset
-(Guide: Prof Nitin V Pujari, Head, Department of Comp Sc., PESIT)
-  - Objective : To extract information from the LAK-Dataset and visualize it using Cypher Text.
-  - The project involves analysing LAK Dataset, conversion to cypher and providing means of querying.
-- Mapping Engineering Research in India
-(Guide: Dr. I K Ravichandra Rao & Dr. K S Raghavan, Researchers, KAnOE)
-  - Objective :To study and analyse the trends of engineering research in India.
-  - The project included analysis of research papers from India in IEEE Journals, for the past 10 years.
-  - Paper published in 10th Intl Conference on Webometrics, Informetrics and Scientometrics, Germany.
+------------------------
+**Analysis of the ACOA Dataset** 
+
+Under the guidance of [Dr Stan Matwin](https://scholar.google.co.in/citations?user=rCoJeuYAAAAJ), Director, BigData Analytics Institute, Dalhousie University
+
+Abstract
+
+The ACOA Database maintained by the Atlantic Canada Opportunities Agency (ACOA) since contains information about projects that have been approved by ACOA since 1995. The information present also contains the amount allocated to a particular project and the location of the project. Another famous dataset maintained by Elections Canada is the list of the elected representatives of the Candian parliament. The main aim of this project is to visualize the political affliation of a given elected representative of a given region alogside the funds  that are allocated by ACOA. The main challenge lies in the fact that the ACOA database is divided based on postal codes whereas the other dataset is based on federal electoral district numbers. We describe the process of extracting relevant data from these datasets, visualizing them geo-spatially, generating a few interesting patterns and finally the analysis these patterns.
+
+----------------------------------------
+
+**Sales Data Visualization and Analysis** 
+
+Under the guidance of [Dr Somayeh Fatahi](https://scholar.google.co.in/citations?user=F6hfVc8AAAAJ), Researcher, BigData Analytics Institute, Dalhousie University
+
+Abstract
+
+The amount of sales in a given region depends on many factors like the population, ethnicity and age of the people, presence of other retail stores and so on. Hence using data visualization and analytics we can identify the trends that are deciding the sales of that region. In this project we aim to visualize the sales data of supermarkets in a few cities of Canada by using geospatial visualization. We describe the procedure to create bubble charts and ink-drop visualization of maps and the cluster analysis of those bubbles.
+
+----------------------------------------
+
+**Autoscaling of Cloud Foundry** 
+
+Under the guidance of [Dr Dinkar Sitaram](https://scholar.google.co.in/citations?user=LXx5klIAAAAJ), Head, Centre for Cloud Computing, PESIT.
+
+Abstract
+
+Cloud Foundry is a portable, open source platform-as-a-service (PAAS) initiative maintained by EMC, VMWare and General Electric that has recently garnered a great deal of attention due to its newly formed multivendor foundation. Cloud Foundry implements auto scaling using the BOSH autoscaler which is a reactive model of auto scaling. This reactive approach has some disadvantages. The primary aim of our work is to prevent these disadvantages by utilizing a preemptive approach to autoscaling using Machine Learning models. We intend to use machine learning to predict the parameters involved in maintaining QoS. In this way we can overcome the problems associated with the reactive approach of BOSH.
+
+---------------------------------------
+
+**Extracting information and Visualization of LAK Dataset** 
+
+Under the guidance of [Dr Nitin V Pujari](https://scholar.google.co.in/citations?user=HwOiwSAAAAAJ), Head, Department of Comp Sc., PESIT.
+
+Abstract
+
+In the study of Learning Analytics the requirements of datasets is very important. The LAK Dataset provided by the Learning Analytics Summer Institute (LASI) is a very well defined and maintained dataset. The dataset provided by LASI is in nTriples format which is suitable for semantic web technologies. This project aims to convert the data in N-Triples format to Cypher Text, a format very easy to learn and  understand, and then uploading the dataset into a graph database management system called Neo4j which is an open-source tool and is platform-agnostic. Apart from uploading the dataset into a Graph DBMS, we also aim at providing support to query the dataset using Cypher language either directly (using the Neo4j web view) or through a client and download whatever information that he requires in a tabular form as a portable document (PDF). 
+
+---------------------------------------
+
+**Mapping Engineering Research in India** 
+
+Under the guidance of [Dr. I K Ravichandra Rao](https://scholar.google.co.in/citations?user=Ozk_6FsAAAAJ) & Dr. K S Raghavan, Researchers, Center for Knowledge Analytics and Ontological Engineering.
+
+Abstract
+
+Higher education institutions in India especially in Engineering, barring a few notable institutions, have largely focused on teaching at undergraduate and graduate levels. In recent years, some programmes have been initiated (e.g. TEQIP) to encourage research in these institutions. In this paper an attempt has been made to examine Indian research output in Engineering. The papers with at least one of the authors having an Indian affiliation and published in any of the IEEE journals have been considered for this study. The growth of output over a 10 year period from 2004 to 2013 has been examined and compared with that of China. The major countries that output a substantial volume of research literature in engineering have been identified based on the data and their h-index computed and compared. The top institutions in India have been identified as also the major journals in which Indian research appear
+
+
+---------------------------------------
+
 
 Course Mini Projects
 ---
