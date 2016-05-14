@@ -69,22 +69,18 @@ Other Projects
 (Guide: Dr Stan Matwin, Director, BigData Analytics Institute, Dalhousie University)
   - Objective : To discover if the political association of a region affects the public grants that it recieves.
   - The project involves merging of four datasets, visualization using R and spatio-temporal analysis.
-
 - Sales Data Visualization and Analysis
 (Guide: Dr Somayeh Fatahi, Researcher, BigData Analytics Institute, Dalhousie University)
   - Objective : To visualize the sales data of stores based on ethnicity and to analyse the clusters.
   - The project involves ink drop visualization using R and analysis using cluster mapping
-
 - Autoscaling of Cloud Foundry
 (Guide: Dr Dinkar Sitaram, Head, Centre for Cloud Computing, PESIT)
   - Objective : To propose a better technique to autoscale Cloud Foundry using predictive approaches.
   - The project involves adding a Perceptron based predictive scaling algorithm to BOSH.
-
 - Extracting information and Visualization of LAK Dataset
 (Guide: Prof Nitin V Pujari, Head, Department of Comp Sc., PESIT)
   - Objective : To extract information from the LAK-Dataset and visualize it using Cypher Text.
   - The project involves analysing LAK Dataset, conversion to cypher and providing means of querying.
-
 - Mapping Engineering Research in India
 (Guide: Dr. I K Ravichandra Rao & Dr. K S Raghavan, Researchers, KAnOE)
   - Objective :To study and analyse the trends of engineering research in India.
@@ -98,23 +94,18 @@ Course Mini Projects
 (Guide: Dr. Ashutosh Bhatia , Jan’15 - May’15)
   - Project work for partial credit involved the simulation of a load balancer and multiple queues.
   - It invovled programming the various methods of load balancing and it's visualization using Javascript. 
- 
 - Local Network Drive. (Software Engineering)
 (Guide: Prof. H Phalachandra , Jan’15 - May’15)
   - Project work for partial credit involved the creation of a virtual storage space over a LAN.
   - It involved server side coding and streaming using RTSP.
-
 - Implementation of First and Follow of a Simple Grammar. (Compiler Design)
 (Guide: Prof. H B Mahesh , Aug’14 - Dec’14)
   - Project work for partial credit involved the generation of First and Follow set of any given grammar.
   - It required a deep understanding of both recursive structures and modular programming.
-  
 - Hospital Management Systems (RDBMS)
 (Guide: Prof. Prafullata K Auradkar , Jan’14 - May’14)
   - Project work for partial credit involved creating an interface for Hospitals to increase efficiency.
   - It included automating the system of admitting patients, enrolling Doctors and Nurses.
-
-
 - Hospital Management Systems (Data Structures using Java)
 (Guide: Prof. Badri Prasad , Aug’13 - Dec’13)
   - Project work for partial credit involved creating an interface for Hospitals to increase efficiency.
