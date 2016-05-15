@@ -42,8 +42,6 @@ i
 	cursor: pointer;
 	color: rgb(51, 122, 183);
 }
-//Taken from http://cssglobe.com/pure-css3-post-tags/
-
 .tags{
 	list-style:none;
 	display: inline-block;
@@ -51,7 +49,8 @@ i
 .tags li{
 	border-radius: 5px;
 	padding: 2px;
-	display: inline;
+	margin: 1px;
+	display: inline-block;
 	border: 2px solid rgb(51, 122, 183);
 	list-style:none;
 	cursor: pointer;
