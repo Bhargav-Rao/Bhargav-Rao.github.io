@@ -31,7 +31,7 @@ function initialize() {
   }
 
 
-  /*if(google){
+  if(google){
     var mapProp = {
       center:new google.maps.LatLng(12.928130, 77.573091),
       zoom:18,
@@ -45,6 +45,6 @@ function initialize() {
       title: 'My Home'
     });
     google.maps.event.addDomListener(window, 'load', initialize);
-  }*/
+  }
 
 }
